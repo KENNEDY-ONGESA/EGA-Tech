@@ -4,4 +4,4 @@ python-dotenv
 huggingface_hub
 openai
 gunicorn
-#hddk https://music-playlist-generator-g6freydyc6bhdye2.scm.canadacentral-01.azurewebsites.net:443/Music-Playlist-Generator.git
+#hddk .azurewebsites.net:443/Music-Playlist-Generator.git
