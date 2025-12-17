@@ -85,11 +85,29 @@ Your code needs the API keys (`HF_TOKEN`) to work on Azure.
 
 ---
 
-## ✅ Test It
+## 🚑 Troubleshooting: "Application Error"
 
-1.  Make a small change to your `backend/` code (or just push the workflow file).
-2.  Go to the **Actions** tab in GitHub.
-3.  You should see the "Deploy Backend to Azure" workflow running.
-4.  Once green, your backend is live at `https://<your-app-name>.azurewebsites.net`.
+If deployment is green but you see **:( Application Error** when visiting the URL, do this:
 
-⚠️ **Don't forget:** Update your Frontend (Netlify) with this new URL!
+### 1. Set the Startup Command (The most likely fix!)
+
+Azure sometimes doesn't know how to start your app. We need to tell it explicitly.
+
+1.  Go to **Azure Portal** -> Your App Service.
+2.  Under **Settings**, click **Configuration**.
+3.  Go to the **General settings** tab.
+4.  Find **Startup Command**.
+5.  Paste this exactly:
+    ```bash
+    gunicorn --bind=0.0.0.0:8000 --timeout 600 app:app
+    ```
+6.  Click **Save**.
+7.  Wait 1-2 minutes and refresh your website.
+
+### 2. Check the Logs
+
+If it still fails, see the real error:
+
+1.  Go to **Monitoring** -> **Log Stream** (left menu).
+2.  Watch the logs as you try to refresh the website.
+3.  If you see "ModuleNotFoundError", check your `requirements.txt`.
