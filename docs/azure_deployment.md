@@ -32,9 +32,18 @@ This guide shows you how to automate your backend deployment to Microsoft Azure 
 
 This secret file allows GitHub to login to Azure without needing your username/password.
 
-1.  Go to your new **App Service** in the Azure Portal.
-2.  On the **Overview** blade top menu, click **"Get publish profile"**.
-3.  It will download a file (ends in `.PublishSettings`). Keep this safe!
+### ⚠️ Common Error: "Basic Auth Disabled"
+
+If you click "Get publish profile" and see an error saying **"Basic Authentication is disabled"**, follow these steps to fix it:
+
+1.  In your Azure Web App menu (left side), go to **Settings** -> **Configuration**.
+2.  Click the **General settings** tab at the top.
+3.  Scroll down to **Platform settings** (or look for "SCM Basic Auth Publishing Credentials").
+4.  Toggle **SCM Basic Auth Publishing Credentials** to **On**.
+5.  Click **Save**.
+6.  Now try clicking **"Get publish profile"** on the Overview page again. It should work!
+
+7.  It will download a file (ends in `.PublishSettings`). Keep this safe!
 
 ---
 

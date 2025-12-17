@@ -8,7 +8,7 @@ on:
       - "backend/**"
 
 env:
-  AZURE_WEBAPP_NAME: your-app-name-here # set this to your application's name
+  AZURE_WEBAPP_NAME: Music-Playlist-Generator # set this to your application's name
   PYTHON_VERSION: "3.9" # set this to the python version to use
 
 jobs:
